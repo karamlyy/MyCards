@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.karamlyy.mycards.R
 import com.karamlyy.mycards.databinding.FragmentHomeBinding
+import com.karamlyy.mycards.model.CardModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), CardCLickListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -26,6 +27,10 @@ class HomeFragment : Fragment() {
     ): View? {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        binding.viewModel = viewModel
+        binding.cardClickListener = this
 
         viewModel.cardList.observe(viewLifecycleOwner) {
             println(it)
@@ -40,6 +45,14 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding
+    }
+
+    override fun onCardClick(id: Int) {
+
+    }
+
+    override fun onCardChecked(cardModel: CardModel) {
+
     }
 
 
