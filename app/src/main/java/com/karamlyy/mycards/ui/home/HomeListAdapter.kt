@@ -13,6 +13,7 @@ class HomeListAdapter(private val cardCLickListener: CardCLickListener): ListAda
     class ViewHolder(private val binding: SingleCardItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(cardCLickListener: CardCLickListener, cardModel: CardModel) {
             binding.cardModel = cardModel
+            binding.cardClickListener = cardCLickListener
             binding.executePendingBindings()
         }
 

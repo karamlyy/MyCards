@@ -13,7 +13,7 @@ data class CardModel(
     val cvv: String,
     val holder: String,
     val type: Type?,
-    val isFavorite: Boolean
+    val isFavorite: Boolean?
 ) {
     fun areContentsTheSame(newItem: CardModel): Boolean {
         return this.title == newItem.title &&

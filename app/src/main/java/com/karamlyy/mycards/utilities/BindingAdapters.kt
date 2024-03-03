@@ -13,23 +13,22 @@ import com.karamlyy.mycards.ui.home.CardCLickListener
 import com.karamlyy.mycards.ui.home.HomeListAdapter
 
 
-@BindingAdapter("setItemCardType")
-fun setItemCardType(imageView: ImageView, type: Type?) {
-    val context = imageView.context
-
-    val type = when(type) {
-        Type.MASTER -> R.color.priority_high
-        Type.VISA -> R.color.md_theme_light_secondary
-        else -> R.color.seed
+@BindingAdapter("setItemCardTypeImage")
+fun setItemCardTypeImage(imageView: ImageView, type: Type?) {
+    val imageRes = when (type) {
+        Type.MASTER -> R.drawable.master
+        Type.VISA -> R.drawable.visa
+        else -> R.drawable.ic_launcher_foreground
     }
 
-    ImageViewCompat.setImageTintList(imageView, ColorStateList.valueOf(ContextCompat.getColor(context, type)))
+    imageView.setImageResource(imageRes)
 }
+
 
 @BindingAdapter("cardList", "setOnClickListener")
 fun  setHomeRecyclerViewAdapter(
     recyclerView: RecyclerView,
-    list: List<CardModel>,
+    list: List<CardModel>?,
     cardCLickListener: CardCLickListener
 ) {
     recyclerView.apply {
