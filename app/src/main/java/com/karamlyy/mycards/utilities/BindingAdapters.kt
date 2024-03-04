@@ -1,9 +1,6 @@
 package com.karamlyy.mycards.utilities
-
-import android.content.res.ColorStateList
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
-import androidx.core.widget.ImageViewCompat
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.karamlyy.mycards.R
@@ -11,6 +8,7 @@ import com.karamlyy.mycards.model.CardModel
 import com.karamlyy.mycards.model.Type
 import com.karamlyy.mycards.ui.home.CardCLickListener
 import com.karamlyy.mycards.ui.home.HomeListAdapter
+import java.util.*
 
 
 @BindingAdapter("setItemCardTypeImage")
@@ -40,3 +38,9 @@ fun  setHomeRecyclerViewAdapter(
         }
     }
 }
+
+@BindingAdapter("formattedCardNumber")
+fun formatCardNumber(textView: TextView, cardNumber: String?) {
+    textView.text = cardNumber?.chunked(4)?.joinToString(" ")
+}
+

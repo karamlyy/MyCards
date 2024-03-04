@@ -44,11 +44,14 @@ class NewAndEditFragment : Fragment() {
         viewModel.cardModel.observe(viewLifecycleOwner) {
             binding.fragmentNewAndEditTitleEditText.setText(it.title)
             binding.fragmentNewAndEditNumberEditText.setText(it.number)
-            binding.fragmentNewAndEditExpiredDateEditText.setText(it.expiredDate)
+            binding.fragmentNewAndEditExpiredMonthEditText.setText(it.expiredMonth)
+            binding.fragmentNewAndEditExpiredYearEditText.setText(it.expiredYear)
             binding.fragmentNewAndEditCvvEditText.setText(it.cvv)
             binding.fragmentNewAndEditHolderEditText.setText(it.holder)
             binding.fragmentNewAndEditAutoComplete.setText(it.type?.name, false)
             binding.fragmentNewAndEditCheckbox.isChecked = it.isFavorite == true
+
+
 
             currentTypeIndex = when(it.type) {
                 Type.MASTER -> 0
@@ -89,9 +92,17 @@ class NewAndEditFragment : Fragment() {
     private fun handleSaveButton() {
         val title = binding.fragmentNewAndEditTitleEditText.text.toString()
         val number = binding.fragmentNewAndEditNumberEditText.text.toString()
-        val expiredDate = binding.fragmentNewAndEditExpiredDateEditText.text.toString()
+        val expiredMonth = binding.fragmentNewAndEditExpiredMonthEditText.text.toString()
+        val expiredYear = binding.fragmentNewAndEditExpiredYearEditText.text.toString()
         val cvv = binding.fragmentNewAndEditCvvEditText.text.toString()
         val holder = binding.fragmentNewAndEditHolderEditText.text.toString()
+
+
+
+        if (title.isEmpty() || number.isEmpty() || expiredMonth.isEmpty() || expiredYear.isEmpty() || cvv.isEmpty() || holder.isEmpty()) {
+            Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_LONG).show()
+            return
+        }
 
         val type = when(currentTypeIndex) {
             0 -> Type.MASTER
@@ -100,9 +111,9 @@ class NewAndEditFragment : Fragment() {
         }
 
         if (args.cardId == -1) {
-            viewModel.insertCard(title, number, expiredDate, cvv, holder, type, binding.fragmentNewAndEditCheckbox.isChecked)
+            viewModel.insertCard(title, number,  expiredMonth, expiredYear, cvv, holder, type, binding.fragmentNewAndEditCheckbox.isChecked)
         } else {
-            viewModel.updateCard(title, number, expiredDate, cvv, holder, type, binding.fragmentNewAndEditCheckbox.isChecked)
+            viewModel.updateCard(title, number,  expiredMonth, expiredYear, cvv, holder, type, binding.fragmentNewAndEditCheckbox.isChecked)
         }
 
 

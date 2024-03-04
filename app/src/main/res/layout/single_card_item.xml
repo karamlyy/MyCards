@@ -28,15 +28,16 @@
             <TextView
                 android:id="@+id/cardtitle_tv"
                 style="@style/TextAppearance.Material3.TitleLarge"
-                android:maxLines="1"
-                android:ellipsize="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                tools:text="@{CardModel.title}"
+                android:layout_marginStart="16dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+
                 app:layout_constraintBottom_toBottomOf="@+id/isFavorite_checkbox"
-                app:layout_constraintEnd_toStartOf="@+id/isFavorite_checkbox"
-                app:layout_constraintTop_toTopOf="@+id/isFavorite_checkbox" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/isFavorite_checkbox"
+                tools:text="@{CardModel.title}" />
 
             <CheckBox
                 android:id="@+id/isFavorite_checkbox"
@@ -46,6 +47,7 @@
                 android:onClick="@{() -> CardClickListener.onCardChecked(CardModel)}"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                style="?android:attr/starStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,18 +59,19 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:inputType="text"
-                android:maxLength="16"
+                android:maxLength="19"
                 android:maxLines="1"
-                android:text="@{CardModel.number}"
+                formattedCardNumber="@{CardModel.number}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/isFavorite_checkbox" />
+
 
             <TextView
                 android:id="@+id/cardexpireddate_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@{CardModel.expiredDate}"
+                android:text="@{CardModel.expiredMonth + '/' + CardModel.expiredYear}"
                 app:layout_constraintStart_toStartOf="@+id/cardnumber_tv"
                 app:layout_constraintTop_toBottomOf="@+id/cardnumber_tv" />
 
@@ -88,21 +91,21 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="@{CardModel.holder}"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/cardcvv_tv"
                 app:layout_constraintTop_toBottomOf="@+id/cardcvv_tv" />
 
             <ImageView
                 android:id="@+id/cardtype_iv"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
-                tools:tint="@color/seed"
                 setItemCardTypeImage="@{CardModel.type}"
                 app:layout_constraintBottom_toBottomOf="@+id/cardholder_tv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/cardholder_tv"
-                app:srcCompat="@drawable/ic_circle" />
+                app:srcCompat="@drawable/master" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>

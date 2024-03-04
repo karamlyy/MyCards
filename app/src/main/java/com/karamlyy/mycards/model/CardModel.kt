@@ -9,7 +9,8 @@ data class CardModel(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val title: String,
     val number: String,
-    val expiredDate: String,
+    val expiredMonth: String,
+    val expiredYear: String,
     val cvv: String,
     val holder: String,
     val type: Type?,
@@ -18,7 +19,6 @@ data class CardModel(
     fun areContentsTheSame(newItem: CardModel): Boolean {
         return this.title == newItem.title &&
                 this.number == newItem.number &&
-                this.expiredDate == newItem.expiredDate &&
                 this.cvv == newItem.cvv && this.holder == newItem.holder &&
                 this.type == newItem.type && this.isFavorite == newItem.isFavorite
     }

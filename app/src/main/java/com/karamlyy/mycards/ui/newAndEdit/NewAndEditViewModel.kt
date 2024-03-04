@@ -22,13 +22,14 @@ class NewAndEditViewModel @Inject constructor(
 
     val cardModel = MutableLiveData<CardModel>()
 
-    fun insertCard(title: String, number: String, expiredDate: String, cvv: String, holder: String, type: Type, isFavorite: Boolean){
+    fun insertCard(title: String, number: String, expiredMonth:String, expiredYear: String, cvv: String, holder: String, type: Type, isFavorite: Boolean){
         viewModelScope.launch {
             repository.localDataSource.insertCard(
                 CardModel(
                     title = title,
                     number = number,
-                    expiredDate = expiredDate,
+                    expiredMonth = expiredMonth,
+                    expiredYear = expiredYear,
                     cvv = cvv,
                     holder = holder,
                     type = type,
@@ -46,14 +47,14 @@ class NewAndEditViewModel @Inject constructor(
         }
     }
 
-
-    fun updateCard(title: String, number: String, expiredDate: String, cvv: String, holder: String, type: Type, isFavorite: Boolean) {
+    fun updateCard(title: String, number: String, expiredMonth:String, expiredYear: String, cvv: String, holder: String, type: Type, isFavorite: Boolean) {
         viewModelScope.launch {
             repository.localDataSource.updateCard(CardModel(
                 id = cardModel.value?.id ?: 0,
                 title = title,
                 number = number,
-                expiredDate = expiredDate,
+                expiredMonth = expiredMonth,
+                expiredYear = expiredYear,
                 cvv = cvv,
                 holder = holder,
                 type = type,
