@@ -52,6 +52,6 @@ class HomeFragment : Fragment(), CardCLickListener {
     }
 
     override fun onCardChecked(cardModel: CardModel) {
-
+        viewModel.updateCard(cardModel)
     }
 }

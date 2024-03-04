@@ -40,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
+            android:maxLength="16"
             android:hint="16 digit card number" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -58,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
+            android:maxLength="4"
             android:hint="expired date" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -76,6 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
+            android:maxLength="3"
             android:hint="cvv" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -93,7 +96,7 @@
             android:id="@+id/fragment_new_and_edit_holder_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="textPersonName"
             android:hint="holder name" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -157,7 +160,8 @@
             android:gravity="center"
             android:backgroundTint="#273C71"
             style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
-            android:text="Save" />
+            android:text="Save"
+            android:textColor="#ffffff"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

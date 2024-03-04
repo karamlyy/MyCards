@@ -19,9 +19,11 @@ class HomeViewModel @Inject constructor(
 
     val cardList = repository.localDataSource.getALlCards().asLiveData()
 
-    fun insertCard() {
+    fun updateCard(cardModel: CardModel) {
+        val updatedCardModel = cardModel.copy(isFavorite = cardModel.isFavorite?.not())
         viewModelScope.launch {
-            repository.localDataSource.insertCard(CardModel(title = "Unibank", number = "5243754410952210", expiredDate = "12/24", cvv = "832", holder = "Karam Afandi", type = Type.MASTER, isFavorite = true))
+            repository.localDataSource.updateCard(updatedCardModel)
         }
     }
+
 }
