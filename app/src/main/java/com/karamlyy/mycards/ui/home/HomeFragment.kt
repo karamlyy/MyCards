@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.karamlyy.mycards.R
 import com.karamlyy.mycards.databinding.FragmentHomeBinding
 import com.karamlyy.mycards.model.CardModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,11 +33,9 @@ class HomeFragment : Fragment(), CardCLickListener {
         binding.viewModel = viewModel
         binding.cardClickListener = this
 
-        viewModel.cardList.observe(viewLifecycleOwner) {
-            println(it)
-        }
+
         binding.fragmentHomeFab.setOnClickListener {
-            viewModel.insertCard()
+            findNavController().navigate(R.id.action_homeFragment_to_newAndEditFragment)
         }
 
         return binding.root
@@ -43,11 +43,12 @@ class HomeFragment : Fragment(), CardCLickListener {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding
+        _binding = null
     }
 
     override fun onCardClick(id: Int) {
-
+        val action = HomeFragmentDirections.actionHomeFragmentToNewAndEditFragment(id)
+        findNavController().navigate(action)
     }
 
     override fun onCardChecked(cardModel: CardModel) {
