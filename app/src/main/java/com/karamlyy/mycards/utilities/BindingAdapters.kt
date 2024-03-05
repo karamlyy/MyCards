@@ -3,6 +3,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Query
 import com.karamlyy.mycards.R
 import com.karamlyy.mycards.model.CardModel
 import com.karamlyy.mycards.model.Type
@@ -23,18 +24,32 @@ fun setItemCardTypeImage(imageView: ImageView, type: Type?) {
 }
 
 
-@BindingAdapter("cardList", "setOnClickListener")
+@BindingAdapter("cardList", "setOnClickListener", "searchQuery", "searchCardList")
 fun  setHomeRecyclerViewAdapter(
     recyclerView: RecyclerView,
     list: List<CardModel>?,
-    cardCLickListener: CardCLickListener
+    cardCLickListener: CardCLickListener,
+    searchQuery: String,
+    searchList: List<CardModel>?
 ) {
     recyclerView.apply {
         if (this.adapter == null) {
-            adapter = HomeListAdapter(cardCLickListener).apply { submitList(list) }
+            adapter = HomeListAdapter(cardCLickListener).apply { submitList(
+                if(searchQuery.isEmpty()) {
+                    list
+                } else {
+                    searchList
+                }
+            ) }
         }
         else {
-            (this.adapter as HomeListAdapter).submitList(list)
+            (this.adapter as HomeListAdapter).submitList(
+                if(searchQuery.isEmpty()) {
+                    list
+                } else {
+                    searchList
+                }
+            )
         }
     }
 }

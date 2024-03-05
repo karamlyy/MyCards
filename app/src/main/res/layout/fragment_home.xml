@@ -27,6 +27,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             cardList="@{ViewModel.cardList}"
             setOnClickListener="@{CardClickListener}"
+            searchQuery="@{ViewModel.searchQuery}"
+            searchCardList="@{ViewModel.searchCardList}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
