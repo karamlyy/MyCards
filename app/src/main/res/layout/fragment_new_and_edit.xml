@@ -185,6 +185,7 @@
             android:id="@+id/fragment_new_and_edit_delete_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginStart="16dp"
             android:src="@drawable/ic_delete"
             android:layout_gravity="center"
             android:layout_weight="1"/>
@@ -193,7 +194,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/fragment_new_and_edit_save_button"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="9"
             android:layout_margin="10dp"

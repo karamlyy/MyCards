@@ -50,7 +50,26 @@ class HomeFragment : Fragment(), CardCLickListener, SearchView.OnQueryTextListen
         _binding = null
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupObservers()
+    }
 
+    private fun setupObservers() {
+        viewModel.cardList.observe(viewLifecycleOwner) { cardList ->
+            updateUiBasedOnCards(cardList)
+        }
+    }
+
+    private fun updateUiBasedOnCards(cards: List<CardModel>?) {
+        if (cards.isNullOrEmpty()) {
+            binding.fragmentHomeRecyclerView.visibility = View.GONE
+            binding.noCardsMessage.visibility = View.VISIBLE
+        } else {
+            binding.fragmentHomeRecyclerView.visibility = View.VISIBLE
+            binding.noCardsMessage.visibility = View.GONE
+        }
+    }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.search_menu, menu)
 

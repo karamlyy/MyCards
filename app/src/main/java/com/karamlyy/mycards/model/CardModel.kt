@@ -14,7 +14,8 @@ data class CardModel(
     val cvv: String,
     val holder: String,
     val type: Type?,
-    val isFavorite: Boolean?
+    val isFavorite: Boolean?,
+//    var isCvvVisible: Boolean = false
 ) {
     fun areContentsTheSame(newItem: CardModel): Boolean {
         return this.title == newItem.title &&
@@ -22,4 +23,8 @@ data class CardModel(
                 this.cvv == newItem.cvv && this.holder == newItem.holder &&
                 this.type == newItem.type && this.isFavorite == newItem.isFavorite
     }
+
+//    fun toggleCvvVisibility() {
+//        isCvvVisible = !isCvvVisible
+//    }
 }

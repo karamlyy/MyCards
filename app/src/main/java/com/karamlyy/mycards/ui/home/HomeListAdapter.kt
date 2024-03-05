@@ -17,6 +17,8 @@ class HomeListAdapter(private val cardCLickListener: CardCLickListener): ListAda
             binding.executePendingBindings()
         }
 
+
+
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val binding = SingleCardItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)

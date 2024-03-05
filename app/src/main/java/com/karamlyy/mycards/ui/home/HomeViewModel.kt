@@ -20,6 +20,7 @@ class HomeViewModel @Inject constructor(
     application: Application, private val repository: Repository
 ): AndroidViewModel(application){
 
+
     val cardList = repository.localDataSource.getALlCards().asLiveData()
     var searchCardList: LiveData<List<CardModel>> = MutableLiveData()
     val searchQuery = MutableLiveData("")
