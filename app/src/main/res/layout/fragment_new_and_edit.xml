@@ -175,20 +175,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="10"
+        android:weightSum="2"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
+<!--        <ImageView-->
+<!--            android:id="@+id/fragment_new_and_edit_delete_button"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:src="@drawable/ic_delete"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_weight="1"/>-->
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/fragment_new_and_edit_delete_button"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/ic_delete"
-            android:layout_gravity="center"
-            android:layout_weight="1"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            app:cornerRadius="10dp"
+            android:gravity="center"
+            android:backgroundTint="@color/md_theme_light_error"
+            style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
+            android:text="Delete"
+            android:textColor="#ffffff"/>
 
 
 
@@ -196,7 +209,7 @@
             android:id="@+id/fragment_new_and_edit_save_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="9"
+            android:layout_weight="1"
             android:layout_margin="10dp"
             app:cornerRadius="10dp"
             android:gravity="center"
