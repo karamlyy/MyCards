@@ -30,7 +30,6 @@ class PasscodeVerificationActivity : AppCompatActivity() {
 
     private fun navigateToSecondScreen() {
         val intent = Intent(this, MainActivity::class.java)
-        // Clear the activity stack and start a new task
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
     }
