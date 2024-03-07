@@ -35,7 +35,7 @@
             android:id="@+id/etPasscode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter new passcode"
+            android:hint="Enter passcode"
             android:inputType="numberPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
