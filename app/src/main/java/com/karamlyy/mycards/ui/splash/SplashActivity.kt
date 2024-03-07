@@ -19,8 +19,6 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
 
             startActivity(Intent(this, StartActivity::class.java))
-
-            // Close this activity
             finish()
         }, SPLASH_TIME_OUT)
     }

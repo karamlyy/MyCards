@@ -34,10 +34,6 @@ class StartActivity : AppCompatActivity() {
     private fun initiateBiometricPrompt() {
         val executor = ContextCompat.getMainExecutor(this)
         val biometricPrompt = BiometricPrompt(this, executor, object : BiometricPrompt.AuthenticationCallback() {
-            override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-                super.onAuthenticationError(errorCode, errString)
-                // Handle error
-            }
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)
@@ -47,7 +43,7 @@ class StartActivity : AppCompatActivity() {
         })
 
         val promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Unlock MyApp")
+            .setTitle("Unlock MyCards")
             .setSubtitle("Use your biometric credential to unlock")
             .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.DEVICE_CREDENTIAL)
             .build()
@@ -61,7 +57,6 @@ class StartActivity : AppCompatActivity() {
     }
 
     private fun navigateToPasscodeSetup() {
-        // Check if passcode is already set, if not, navigate to setup, else to verification
         val prefs = this.getSharedPreferences("SecurePrefs", MODE_PRIVATE)
         val isPasscodeSet = prefs.getString("passcodeHash", null) != null
         val intent = if (isPasscodeSet) {
