@@ -62,6 +62,8 @@ dependencies {
     implementation(libs.livedata)
     implementation(libs.lifecycle)
     implementation(libs.savedsatateViewmodel)
+    implementation(libs.lottie)
+    implementation(libs.biometric)
 
     ksp(libs.roomdbCompiler)
     ksp(libs.hiltCompiler)

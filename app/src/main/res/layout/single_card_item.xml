@@ -41,19 +41,20 @@
 
             <CheckBox
                 android:id="@+id/isFavorite_checkbox"
+                style="?android:attr/starStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="@{CardModel.isFavorite()}"
-                android:onClick="@{() -> CardClickListener.onCardChecked(CardModel)}"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                style="?android:attr/starStyle"
+                android:checked="@{CardModel.isFavorite()}"
+                android:onClick="@{() -> CardClickListener.onCardChecked(CardModel)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/cardnumber_tv"
                 style="@style/TextAppearance.Material3.BodyLarge"
+                formattedCardNumber="@{CardModel.number}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -61,7 +62,6 @@
                 android:inputType="text"
                 android:maxLength="19"
                 android:maxLines="1"
-                formattedCardNumber="@{CardModel.number}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/isFavorite_checkbox" />
 
@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="Exp Date:"
+                android:text="exp:"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardnumber_tv" />
 
@@ -132,17 +132,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/isFavorite_checkbox"
+                app:layout_constraintStart_toStartOf="@+id/isFavorite_checkbox"
+                app:layout_constraintTop_toBottomOf="@+id/isFavorite_checkbox"
+                app:srcCompat="@drawable/chip" />
+
 
             <!--            <ImageButton-->
-<!--                android:id="@+id/seeCVV"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:onClick="@{() -> CardModel.toggleCvvVisibility()}"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/cardcvv_tv"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/cardcvv_tv"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/cardcvv_tv"-->
-<!--                app:srcCompat="@drawable/see" />-->
+            <!--                android:id="@+id/seeCVV"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:onClick="@{() -> CardModel.toggleCvvVisibility()}"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/cardcvv_tv"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/cardcvv_tv"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/cardcvv_tv"-->
+            <!--                app:srcCompat="@drawable/see" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
